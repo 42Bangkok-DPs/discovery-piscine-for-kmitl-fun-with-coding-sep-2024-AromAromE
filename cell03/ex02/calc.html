@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calc</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, select, button {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <input type="text" name="num1" placeholder="Number 1" oninput="this.value = this.value.replace(/[^0-9.-]/g, '')">
+            <select name="operator">
+                <option value="add">+</option>
+                <option value="sub">-</option>
+                <option value="mul">*</option>
+                <option value="div">/</option>
+                <option value="mod">%</option>
+            </select>
+            <input type="text" name="num2" placeholder="Number 2" oninput="this.value = this.value.replace(/[^0-9.-]/g, '')">
+            <button type="submit">Try me!</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const num1 = parseFloat(this.num1.value);
+            const num2 = parseFloat(this.num2.value);
+            const operator = this.operator.value;
+
+            if (num1 < 0 || num2 < 0 || isNaN(num1) || isNaN(num2)) {
+                alert("Error :(");
+                return;
+            }
+
+            let result;
+            switch (operator) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'sub':
+                    result = num1 - num2;
+                    break;
+                case 'mul':
+                    result = num1 * num2;
+                    break;
+                case 'div':
+                    result = num2 === 0 ? "It’s over 9000!" : num1 / num2;
+                    break;
+                case 'mod':
+                    result = num2 === 0 ? "It’s over 9000!" : num1 % num2;
+                    break;
+            }
+
+            alert(result);
+            console.log(result);
+
+            setTimeout(() => {
+                alert("Please, use me...");
+            }, 30000);
+        });
+    </script>
+</body>
+
+</html>

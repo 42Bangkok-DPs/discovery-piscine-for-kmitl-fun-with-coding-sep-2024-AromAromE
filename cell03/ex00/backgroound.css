@@ -1,0 +1,11 @@
+body{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    background-color: white;
+}
+
+button{
+    font-size: 1.3rem;
+}

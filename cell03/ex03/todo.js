@@ -12,7 +12,7 @@ const render = () => {
     taskDiv.style.borderRadius = '4px';
     taskDiv.style.border = '1px solid #ddd';
     taskDiv.style.backgroundColor = '#f9f9f9';
-    
+
     if (index === 0) {
       taskDiv.style.borderColor = '#4CAF50';
       taskDiv.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.2)';
@@ -47,13 +47,14 @@ const saveTasks = () => {
 const setCookie = (key, value, days) => {
   const date = new Date();
   date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-  document.cookie = `${key}=${value}; expires=${date.toUTCString()}; path=/`;
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}; ${expires}; path=/`;
 };
 
 const getCookie = (key) => {
   const cookies = document.cookie.split(';').map(c => c.trim());
-  const cookie = cookies.find(c => c.startsWith(`${key}=`));
-  return cookie ? cookie.split('=')[1] : null;
+  const cookie = cookies.find(c => c.startsWith(`${encodeURIComponent(key)}=`));
+  return cookie ? decodeURIComponent(cookie.split('=')[1]) : null;
 };
 
 window.onload = () => {

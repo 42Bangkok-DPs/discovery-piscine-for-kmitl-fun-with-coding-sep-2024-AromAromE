@@ -23,7 +23,6 @@ body {
     width: 100%;
 }
 
-
 h1  {
     font-size: 24px;
     margin-bottom: 20px;
@@ -76,6 +75,6 @@ h2 {
     width: 100%;
 }
 
-.contact-btn:hover {
+.contact:hover {
     background-color: #333;
 }

@@ -1,7 +1,6 @@
 body {
     background-color: #c58485;
     color: #000000;
-
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
@@ -53,8 +52,9 @@ section {
 }
 
 .img-fluid {
-    max-width: 400px;
+    max-width: 22rem;
     height: auto;
+    width: auto;
 }
 
 .btn {

@@ -66,12 +66,9 @@
             $('form').on('submit', function (e) {
                 e.preventDefault();
 
-                const num1Input = $('input[name="num1"]').val();
-                const num2Input = $('input[name="num2"]').val();
+                const num1 = $('input[name="num1"]').val();
+                const num2 = $('input[name="num2"]').val();
                 const operator = $('select[name="operator"]').val();
-
-                const num1 = parseFloat(num1Input);
-                const num2 = parseFloat(num2Input);
 
                 if (isNaN(num1) || isNaN(num2) || num1 < 0 || num2 < 0 || !Number.isInteger(parseFloat(num1)) || !Number.isInteger(parseFloat(num2))) {
                     alert("Error :(");
@@ -81,19 +78,19 @@
                 let result;
                 switch (operator) {
                     case 'add':
-                        result = num1 + num2;
+                        result = parseFloat(num1) + parseFloat(num2);
                         break;
                     case 'sub':
-                        result = num1 - num2;
+                        result = parseFloat(num1) - parseFloat(num2);
                         break;
                     case 'mul':
-                        result = num1 * num2;
+                        result = parseFloat(num1) * parseFloat(num2);
                         break;
                     case 'div':
-                        result = num2 === 0 ? "It’s over 9000!" : num1 / num2;
+                        result = parseFloat(num2) === 0 ? "It’s over 9000!" : parseFloat(num1) / parseFloat(num2);
                         break;
                     case 'mod':
-                        result = num2 === 0 ? "It’s over 9000!" : num1 % num2;
+                        result = parseFloat(num2) === 0 ? "It’s over 9000!" : parseFloat(num1) % parseFloat(num2);
                         break;
                 }
 
